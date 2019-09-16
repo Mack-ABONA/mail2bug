@@ -24,10 +24,11 @@
                item creation will fail. The only automatically defined default is the 'Title' field, that gets
                the email subject as a value. -->
           <DefaultValueDefinition Field="Reporter" Value="##Sender" />
-          <DefaultValueDefinition Field="Contact" Value="##Sender" />
+          <DefaultValueDefinition Field="Contact" Value="##SenderEmail" />
           <DefaultValueDefinition Field="Origin From Customer" Value="##MessageBodyWithSender" />
           <DefaultValueDefinition Field="Area Path" Value="Support" />
           <DefaultValueDefinition Field="Iteration Path" Value="Support" />
+          <DefaultValueDefinition Field="State" Value="Request" />
         </DefaultFieldValues>
         <!-- 'true' means we should attached the email message that triggered the creation of the work item -->
         <AttachOriginalMessage>true</AttachOriginalMessage>
@@ -38,16 +39,21 @@
              Recipients can be specified as email addresses, or as display names
              When specifying more than one recipient, use ; as separator -->
         <ServiceType>EWSByRecipients</ServiceType>
-        <Recipients>testing@abona-erp.com</Recipients>
+        <Recipients>ticketsystem@abona-erp.com</Recipients>
 
         <!-- The email address whose inbox that we want to monitor -->
-        <EWSMailboxAddress>testing@abona-erp.com</EWSMailboxAddress>
+        <EWSMailboxAddress>ticketsystem@abona-erp.com</EWSMailboxAddress>
+        <!-- The email address from which the reply message is send. Remember the user needs the rights to send 
+             from this address -->
+        <EWSAckMailboxAddress>ticket@abona-erp.com</EWSAckMailboxAddress>
+        <!-- The name which is displayed as the sender of the acknowledge -->
+        <EWSAckSenderName>ABONA Support</EWSAckSenderName>
 
         <!-- A username with permissions to log in to the email account. This is generally either in the form of
              email address form (usually the same as the email address in EWSMailboxAddress), or in DOMAIN\username
              form. I've seen cases where the same server would take one or the other (or both), depending on the
              server set up, as well as the client set up, so if one doesn't work, try the other -->
-        <EWSUsername>testing@abona-erp.com</EWSUsername>
+        <EWSUsername>ticketsystem@abona-erp.com</EWSUsername>
 
         <!-- Pointer to a file that stores the password for the login account. The file is expected to be encrypted
              with DPAPI - use the DpapiTool.exe from the Tools subfolder to create one. Note that the tool needs to be
