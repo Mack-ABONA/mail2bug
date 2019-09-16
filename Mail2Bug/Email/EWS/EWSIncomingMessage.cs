@@ -152,11 +152,25 @@ namespace Mail2Bug.Email.EWS
         /// </summary>
         /// <param name="replyHtml">HTML of the contents</param>
         /// <param name="replyAll">true = Reply All; false = reply only to sender</param>
-        public void Reply(string replyHtml, bool replyAll)
+        public void Reply(string replyHtml, bool replyAll, string ackSenderName, string ackSenderAddress)
         {
             var reply = _message.CreateReply(replyAll);
             reply.BodyPrefix = new MessageBody(BodyType.HTML, replyHtml);
-            reply.Send();
+
+            if (ackSenderAddress != null && ackSenderName != null)
+            {
+                var replyMessage = reply.Save(WellKnownFolderName.Drafts);
+                replyMessage.From = new EmailAddress(ackSenderName, ackSenderAddress);
+                replyMessage.Send();
+            } else if (ackSenderAddress != null)
+            {
+                var replyMessage = reply.Save(WellKnownFolderName.Drafts);
+                replyMessage.From = new EmailAddress(ackSenderAddress);
+                replyMessage.Send();
+            } else
+            {
+                reply.Send();
+            }
         }
 
         private static string GetPlainTextBody(Item message)

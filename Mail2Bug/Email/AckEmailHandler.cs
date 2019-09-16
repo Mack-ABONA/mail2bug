@@ -38,7 +38,8 @@ namespace Mail2Bug.Email
         {
             var replyTemplate = new AckEmailTemplate(_config.EmailSettings.GetReplyTemplate());
             var replyBody = replyTemplate.Apply(workItemFields, _config);
-            originalMessage.Reply(replyBody, _config.EmailSettings.AckEmailsRecipientsAll);
+            originalMessage.Reply(replyBody, _config.EmailSettings.AckEmailsRecipientsAll, 
+                _config.EmailSettings.EWSAckSenderName, _config.EmailSettings.EWSAckMailboxAddress);
         }
         
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AckEmailHandler));

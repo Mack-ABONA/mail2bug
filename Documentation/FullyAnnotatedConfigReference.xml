@@ -273,6 +273,12 @@
         <!-- The email address of the inbox we want to monitor -->
         <EWSMailboxAddress>mail2bug@domain.com</EWSMailboxAddress>
 
+        <!-- The email address from which the reply message is send. Remember the user needs the rights to send 
+             from this address -->
+        <EWSAckMailboxAddress>mail4bug@domain.com</EWSAckMailboxAddress>
+        <!-- The name which is displayed as the sender of the acknowledge -->
+        <EWSAckSenderName>Mail2Bug</EWSAckSenderName>
+
         <!-- A username with permissions to log in to the email account. This is generally either in the form of
              email (usually the same as the email address in EWSMailboxAddress), or in DOMAIN\username form. I've seen cases
              where the same server would take one or the other (or both), depending on the server set up, as well as the client

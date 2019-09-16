@@ -198,6 +198,8 @@ namespace Mail2Bug
             #region EWSSettings
 
             public string EWSMailboxAddress { get; set; }
+            public string EWSAckMailboxAddress { get; set; }
+            public string EWSAckSenderName { get; set; }
             public string EWSUsername { get; set; }
             public string EWSPasswordFile { get; set; }
             public KeyVaultSecret EWSKeyVaultSecret { get; set; }
