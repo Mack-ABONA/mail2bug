@@ -123,7 +123,11 @@ namespace Mail2Bug.Email.EWS
 
         public void Delete()
         {
-            _message.Delete(DeleteMode.MoveToDeletedItems);
+            _message.Move(
+                new FolderId(
+                    "AAMkADNhZjczYzBhLTczODktNDg0YS04ZjIzLWMwMDJkZWRlMjA5YgAuAAAAAACXvVyFLMurRIrMHo+/L3K9AQBhKqCaM4qtR5OUEamxV1m8AAAHAKyCAAA="
+                    ));
+            //_message.Delete(DeleteMode.MoveToDeletedItems);
         }
 
         public IEnumerable<IIncomingEmailAttachment> Attachments { get; private set; }

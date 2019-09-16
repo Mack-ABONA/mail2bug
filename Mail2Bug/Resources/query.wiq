@@ -2,5 +2,5 @@
 <WorkItemQuery Version="1">
     <TeamFoundationServer>http://dev.azure.com/ABONA</TeamFoundationServer>
     <TeamProject>Support</TeamProject>
-    <Wiql>SELECT [System.Id], [System.Title] FROM WorkItems WHERE ([System.CreatedBy] = 'm.ackermann@abona-erp.com') ORDER BY [System.Id] </Wiql>
+    <Wiql>SELECT [System.Id], [System.Title] FROM WorkItems WHERE ([System.CreatedBy] = 'nonexisting@abona-erp.com') ORDER BY [System.Id] </Wiql>
 </WorkItemQuery>

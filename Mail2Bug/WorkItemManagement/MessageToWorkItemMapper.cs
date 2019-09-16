@@ -59,7 +59,14 @@ namespace Mail2Bug.WorkItemManagement
 
         private int? IsAppendOnlyMessage(IIncomingEmailMessage message)
         {
-            var workItemId = GetWorkItemIdFromText(message.Subject, _appendOnlyEmailTitleRegex, "id");
+            int? workItemId;
+            if (string.IsNullOrEmpty(message.Subject))
+            {
+                workItemId = GetWorkItemIdFromText("Kein Betreff", _appendOnlyEmailTitleRegex, "id");
+            } else
+            {
+                workItemId = GetWorkItemIdFromText(message.Subject, _appendOnlyEmailTitleRegex, "id");
+            }
 
             if (!workItemId.HasValue)
             {

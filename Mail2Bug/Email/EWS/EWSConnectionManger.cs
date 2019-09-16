@@ -99,6 +99,20 @@ namespace Mail2Bug.Email.EWS
 
             Logger.DebugFormat("Service URL: {0}", exchangeService.Url);
 
+            // Get FolderId from FolderName
+            /*FolderView view = new FolderView(100);
+            view.PropertySet = new PropertySet(BasePropertySet.IdOnly);
+            view.PropertySet.Add(FolderSchema.DisplayName);
+            view.Traversal = FolderTraversal.Deep;
+            FindFoldersResults findFolderResults = exchangeService.FindFolders(WellKnownFolderName.Root, view);
+            //find specific folder
+            foreach (Folder f in findFolderResults)
+            {
+                //show folderId of the folder "test"
+                if (f.DisplayName == "Acknowledged")
+                    Console.WriteLine(f.Id);
+            }*/
+
             return new EWSConnection()
             {
                 Service = exchangeService,
